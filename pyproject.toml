@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "ckip-2-tei"
+version = "1.0.0"
+description = ""
+authors = ["Retr0327"]
+readme = "README.md"
+packages = [{include = "ckip_2_tei"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+ckip-transformers = "^0.3.2"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.21.3"
+black = "^23.1.0"
+pre-commit = "^3.1.1"
+pylint = "^2.17.0"
+vulture = "^2.7"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.vulture]
+min_confidence = 80
+paths = ["ckip2tei"]
+sort_by_size = true
+
