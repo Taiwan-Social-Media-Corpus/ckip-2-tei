@@ -5,11 +5,6 @@ from ..model import CKIPClient
 ws_driver, pos_driver = CKIPClient().connect()
 
 
-def remove_empty_strings(sentence_list: list[str]) -> list[str]:
-    """Remove empty strings from a list of sentences."""
-    return [sentence for sentence in sentence_list if sentence != ""]
-
-
 async def pack_ws_pos(ws_pos_pair: tuple) -> list[tuple]:
     """The pack_ws_pos_sentece method packs a word and its part-of-speech to a pair.
 
