@@ -2,6 +2,7 @@
 disable =
     missing-module-docstring,
 	too-few-public-methods,
+    import-outside-toplevel,
 
 [FORMAT]
 max-line-length = 128
