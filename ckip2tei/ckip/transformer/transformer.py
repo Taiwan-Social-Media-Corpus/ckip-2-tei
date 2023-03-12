@@ -27,16 +27,15 @@ async def pack_ws_pos(ws_pos_pair: tuple) -> list[tuple]:
     return list(zip(sentence_ws, sentence_pos))
 
 
-async def transform(sentence_list: list[str]):
+async def transform(sentence: str):
     """The transform method transforms the sentences in a list to word segmentation and
     part-of-speech results.
     """
-    is_empty = not sentence_list or all(sentence == "" for sentence in sentence_list)
+    stripped_sentence = sentence.strip()
 
-    if is_empty:
-        return sentence_list
+    if not stripped_sentence:
+        return []
 
-    filtered_list = remove_empty_strings(sentence_list)
-    ws_pipeline = ws_driver(filtered_list, use_delim=True)
+    ws_pipeline = ws_driver([stripped_sentence], use_delim=True)
     pos_pipeline = pos_driver(ws_pipeline, use_delim=True)
     return await asyncio.gather(*map(pack_ws_pos, zip(ws_pipeline, pos_pipeline)))
