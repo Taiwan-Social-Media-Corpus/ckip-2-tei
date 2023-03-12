@@ -1,25 +1,27 @@
+from dataclasses import (
+    dataclass,
+    field,
+)
+from pathlib import Path
 import pickle
-from dataclasses import dataclass, field
-from pathlib import Path, PosixPath
-from typing import Optional
 
-from ckip2tei.config import CKIP_DIR, CKIP_PATH
+from ckip2tei.config import (
+    CKIP_DIR,
+    CKIP_PATH,
+    NLP_MODEL,
+)
 
 
-@dataclass(slots=True)
+@dataclass(frozen=True, slots=True)
 class CKIPClient:
     """
     The CKIPClient object connects to ckip drivers.
     """
 
-    path: Optional[PosixPath | str] = None
-    model: Optional[str] = None
-    _ckip_path: str = field(init=False, repr=False)
-    _nlp_model: str = field(init=False, repr=False)
+    _ckip_path: str = field(init=False, default=CKIP_PATH)
+    _nlp_model: str = field(init=False, default=NLP_MODEL)
 
     def __post_init__(self) -> None:
-        self._ckip_path = self.path if self.path is not None else CKIP_PATH
-        self._nlp_model = self.model if self.model is not None else "bert-base"
         self.on_ready()
 
     def on_ready(self) -> None:
@@ -27,7 +29,10 @@ class CKIPClient:
         has_path = Path(self._ckip_path).exists()
 
         if not has_path:
-            from ckip_transformers.nlp import CkipPosTagger, CkipWordSegmenter
+            from ckip_transformers.nlp import (
+                CkipPosTagger,
+                CkipWordSegmenter,
+            )
 
             Path(CKIP_DIR).mkdir(parents=True, exist_ok=True)
             drivers = (
