@@ -9,6 +9,7 @@ packages = [{include = "ckip_2_tei"}]
 [tool.poetry.dependencies]
 python = "^3.10"
 ckip-transformers = "^0.3.2"
+python-dotenv = "^1.0.0"
 
 
 [tool.poetry.group.dev.dependencies]
