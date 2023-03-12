@@ -133,4 +133,4 @@ dmypy.json
 tempCodeRunnerFile.py
 
 # ckip drivers 
-ckip_drivers.pickle
+.ckip/
