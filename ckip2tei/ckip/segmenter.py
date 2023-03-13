@@ -49,4 +49,4 @@ async def segment(data: str | list[dict[str, str]]):
     if is_comment_data:
         return await segment_comments(data)
 
-    return transform(data)
+    return await transform(data)
