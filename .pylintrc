@@ -2,6 +2,8 @@
 disable =
     missing-module-docstring,
     too-few-public-methods,
+    empty-docstring,
+    missing-function-docstring,
     import-outside-toplevel,
 
 [FORMAT]
