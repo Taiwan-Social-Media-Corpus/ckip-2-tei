@@ -44,7 +44,7 @@ async def segment(data: str | list[dict[str, str]]):
         a list of dicts if the data refers to comments, a list of list of tuples
         otherwise.
     """
-    is_comment_data = not data.strip()
+    is_comment_data = isinstance(data, list)
 
     if is_comment_data:
         return await segment_comments(data)
