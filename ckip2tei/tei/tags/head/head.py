@@ -2,8 +2,8 @@ import asyncio
 import xml.etree.ElementTree as ET
 
 
-async def create_meta_tag(name: str, value: str, tei_header: ET.Element) -> None:
-    """The create_meta_tag function adds a new metadata tag to the given `tei_header`.
+async def create_metadata_tag(name: str, value: str, tei_header: ET.Element) -> None:
+    """The create_metadata_tag function adds a new metadata tag to the given `tei_header`.
 
     Args:
         name (str): the name of the metadata tag to add
@@ -13,8 +13,8 @@ async def create_meta_tag(name: str, value: str, tei_header: ET.Element) -> None
     ET.SubElement(tei_header, "metadata", name=name).text = value
 
 
-async def create_meta_tags(root: ET.Element, meta_data: dict[str, str]) -> None:
-    """The create_meta_tags function creates a set of metadata tags and adds
+async def create_header_tag(root: ET.Element, meta_data: dict[str, str]) -> None:
+    """The create_header_tag function creates a set of metadata tags and adds
     them to the `tei_header`.
 
     Args:
@@ -25,7 +25,7 @@ async def create_meta_tags(root: ET.Element, meta_data: dict[str, str]) -> None:
     tasks = []
 
     for name, value in meta_data.items():
-        task = asyncio.create_task(create_meta_tag(name, value, tei_header))
+        task = asyncio.create_task(create_metadata_tag(name, value, tei_header))
         tasks.append(task)
 
     await asyncio.gather(*tasks)
