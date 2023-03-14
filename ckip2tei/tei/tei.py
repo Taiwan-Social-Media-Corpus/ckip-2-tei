@@ -4,7 +4,7 @@ from xml.dom import minidom
 import xml.etree.ElementTree as ET
 
 from .tags.body import create_body_tags
-from .tags.meta import create_meta_tags
+from .tags.head import create_header_tag
 from .utils import get_year
 
 PostData = dict[str, str | dict[str, int] | list[dict[str, str]]]
@@ -29,8 +29,8 @@ async def create_tags(root: ET.Element, post_data: PostData, media: Media) -> No
     }
     content = (post_data.get("title"), post_data.get("body"), post_data.get("comments"))
 
-    task1 = asyncio.create_task(create_meta_tags(root, meta_data))
-    task2 = asyncio.create_task(create_body_tags(root, content))
+    task1 = asyncio.create_task(create_header_tag(root, meta_data))
+    task2 = asyncio.create_task(create_body_tags(root, content, meta_data["author"]))
     await asyncio.gather(task1, task2)
 
 
