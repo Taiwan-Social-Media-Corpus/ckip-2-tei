@@ -23,7 +23,8 @@ async def segment_comment(comment_data: dict[str, str]):
             'order': '1',
         }
     """
-    return {**comment_data, "content": await transform(comment_data["content"])}
+    content = await transform(comment_data["content"])
+    return {**comment_data, "content": content}
 
 
 async def segment_comments(list_of_comments: list[dict[str, str]]):
@@ -44,7 +45,7 @@ async def segment(data: str | list[dict[str, str]]):
         a list of dicts if the data refers to comments, a list of list of tuples
         otherwise.
     """
-    is_comment_data = isinstance(data, list)
+    is_comment_data = all(isinstance(value, dict) for value in data)
 
     if is_comment_data:
         return await segment_comments(data)
