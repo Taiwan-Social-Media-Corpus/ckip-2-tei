@@ -29,6 +29,9 @@ class BodyCleaner(Cleaner):
     segmented_sentences: SegmentedSentences
 
     def clean(self):
+        if not self.segmented_sentences:
+            return ""
+
         return self.segmented_sentences
 
 
