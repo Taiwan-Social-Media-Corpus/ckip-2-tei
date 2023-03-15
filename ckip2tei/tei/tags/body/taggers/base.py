@@ -38,6 +38,6 @@ class TeiTagger(ABC):
         segmented_sentences = self.data_cleaner.clean()
 
         if not segmented_sentences:
-            return ""
+            return None
 
         return await self.build_tags(segmented_sentences)
