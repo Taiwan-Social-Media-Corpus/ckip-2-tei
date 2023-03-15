@@ -36,7 +36,7 @@ async def segment_comments(list_of_comments: list[dict[str, str]]):
 # public interface
 
 
-async def segment(data: str | list[dict[str, str]]):
+async def segment(data: str | list[str] | list[dict[str, str]]):
     """The segment function segments the `data` based on its type.
 
     Args:
@@ -45,7 +45,9 @@ async def segment(data: str | list[dict[str, str]]):
         a list of dicts if the data refers to comments, a list of list of tuples
         otherwise.
     """
-    is_comment_data = all(isinstance(value, dict) for value in data)
+    is_comment_data = isinstance(data, list) and all(
+        isinstance(value, dict) for value in data
+    )
 
     if is_comment_data:
         return await segment_comments(data)
