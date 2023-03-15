@@ -1,6 +1,5 @@
 [MASTER]
 disable =
-    import-error,
     missing-module-docstring,
     too-few-public-methods,
     empty-docstring,
