@@ -1,10 +1,10 @@
 [tool.poetry]
 name = "ckip-2-tei"
 version = "1.0.0"
-description = ""
+description = "A Python package that asynchronously segments JSON data into TEI XML format."
 authors = ["Retr0327"]
 readme = "README.md"
-packages = [{include = "ckip_2_tei"}]
+packages = [{include = "ckip2tei"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
