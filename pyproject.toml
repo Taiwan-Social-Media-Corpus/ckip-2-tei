@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ckip2tei"
-version = "1.0.0"
+version = "1.0.1"
 description = "A Python package that asynchronously segments JSON data into TEI XML format."
 authors = ["Retr0327"]
 readme = "README.md"
