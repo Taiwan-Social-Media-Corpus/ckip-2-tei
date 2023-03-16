@@ -39,6 +39,7 @@ def generate_tei_xml(post_data: PostData, media: Media) -> str:
 
     Args:
         post_data (PostData): the post data
+        media (Media): a Taiwan social media name
     """
     root = ET.Element("TEI.2")
     asyncio.run(create_tags(root, post_data, media))
