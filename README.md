@@ -64,7 +64,7 @@ After filling the arguments, do it as follows:
 
 
 ```python
-post_dat = {
+post_data = {
     "board": "Soft_Job",
     "post_id": "ABCD",
     "date": "1183186255",
@@ -88,7 +88,7 @@ post_dat = {
     ],
 }
 
-generate_tei_xml(post_data, media)
+generate_tei_xml(post_data, "ptt")
 ```
 
 This prints:
