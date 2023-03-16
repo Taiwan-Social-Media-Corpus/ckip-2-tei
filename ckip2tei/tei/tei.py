@@ -41,6 +41,10 @@ def generate_tei_xml(post_data: PostData, media: Media) -> str:
         post_data (PostData): the post data
         media (Media): a Taiwan social media name
     """
+
+    if not post_data:
+        raise ValueError("post_data cannot be empty")
+
     root = ET.Element("TEI.2")
     asyncio.run(create_tags(root, post_data, media))
 
