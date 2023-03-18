@@ -19,9 +19,13 @@ from .taggers import (
 
 async def create_title_task(text_tag: ET.Element, data: str, author: str):
     """The create_title_task function handles the title tag creation."""
+    segmented_data = await segment(data)
+
+    if not segmented_data:
+        return None
+
     title_tag = ET.SubElement(text_tag, "title", author=author)
     sentence_tag = ET.SubElement(title_tag, "s")
-    segmented_data = await segment(data)
     tagger = TitleTagger(sentence_tag, TitleCleaner(segmented_data))
     await tagger.create()
 
