@@ -10,6 +10,9 @@ class TitleTagger(TeiTagger):
     """
 
     async def build_tag(self, tag_data: tuple[str, str]) -> None:
+        if not tag_data:
+            return None
+
         word, pos = tag_data
         ET.SubElement(self.tag, "w", type=pos).text = escape(word)
 
