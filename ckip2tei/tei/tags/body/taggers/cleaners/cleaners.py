@@ -14,9 +14,12 @@ class TitleCleaner(Cleaner):
     segmented_sentences: SegmentedSentences
 
     def clean(self):
-        if self.segmented_sentences[0][0][0].startswith("http"):
-            return ""
+        invalid_senntence = not self.segmented_sentences or self.segmented_sentences[0][
+            0
+        ][0].startswith("http")
 
+        if invalid_senntence:
+            return ""
         return self.segmented_sentences[0]
 
 
