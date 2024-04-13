@@ -37,7 +37,7 @@ The `post_data` argument should be in the following format:
 ```python
 {
     "board": "Soft_Job",
-    "post_id": "ABCD",
+    "id": "ABCD",
     "date": "1183186255",
     "title": "[請益] 最愛的程式?",
     "author": "Retr0327",
@@ -66,7 +66,7 @@ After filling the arguments, do it as follows:
 ```python
 post_data = {
     "board": "Soft_Job",
-    "post_id": "ABCD",
+    "id": "ABCD",
     "date": "1183186255",
     "title": "[請益] 最愛的程式?",
     "author": "Retr0327",
@@ -98,7 +98,7 @@ This prints:
    <teiHeader>
       <metadata name="media">ptt</metadata>
       <metadata name="author">Retr0327</metadata>
-      <metadata name="post_id">ABCD</metadata>
+      <metadata name="id">ABCD</metadata>
       <metadata name="year">2007</metadata>
       <metadata name="board">Soft_Job</metadata>
       <metadata name="title">[請益] 最愛的程式?</metadata>
