@@ -10,7 +10,7 @@ def main():
 
     setup(
         name="ckip2tei",
-        version="1.1.2",
+        version="1.1.3",
         description="A Python package that asynchronously segments JSON data into TEI XML format.",
         packages=find_namespace_packages(
             include=[
