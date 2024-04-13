@@ -38,11 +38,11 @@ The `post_data` argument should be in the following format:
 {
     "board": "Soft_Job",
     "id": "ABCD",
-    "date": "1183186255",
+    "created_at": 1183186255,
     "title": "[請益] 最愛的程式?",
     "author": "Retr0327",
-    "body": "這是一篇測試文章\n我喜歡 Python 和 TypeScript",
-    "post_vote": {"推 (pos)": 2, "噓 (neg)": 0, "→ (neu)": 0},
+    "content": "這是一篇測試文章\n我喜歡 Python 和 TypeScript",
+    "comment_reaction": {"推 (pos)": 2, "噓 (neg)": 0, "→ (neu)": 0},
     "comments": [
         {
             "type": "pos",
@@ -67,11 +67,11 @@ After filling the arguments, do it as follows:
 post_data = {
     "board": "Soft_Job",
     "id": "ABCD",
-    "date": "1183186255",
+    "created_at": 1183186255,
     "title": "[請益] 最愛的程式?",
     "author": "Retr0327",
-    "body": "這是一篇測試文章\n我喜歡 Python 和 TypeScript",
-    "post_vote": {"推 (pos)": 2, "噓 (neg)": 0, "→ (neu)": 0},
+    "content": "這是一篇測試文章\n我喜歡 Python 和 TypeScript",
+    "comment_reaction": {"推 (pos)": 2, "噓 (neg)": 0, "→ (neu)": 0},
     "comments": [
         {
             "type": "pos",
