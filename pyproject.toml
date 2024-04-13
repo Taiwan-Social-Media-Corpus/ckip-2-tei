@@ -24,7 +24,7 @@ vulture = "^2.11"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-[[tool.vulture]
+[tool.vulture]
 min_confidence = 80
 paths = ["ckip2tei"]
 sort_by_size = true
