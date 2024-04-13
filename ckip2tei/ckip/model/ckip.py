@@ -16,7 +16,7 @@ class CKIPClient:
 
     def on_ready(self) -> None:
         """The on_ready method initializes and caches the CKIP drivers."""
-        has_path = Path(config.config_drivers_path).exists()
+        has_path = Path(config.ckip_drivers_path).exists()
 
         if not has_path:
             from ckip_transformers.nlp import (
@@ -30,7 +30,7 @@ class CKIPClient:
                 CkipPosTagger(model=config.nlp_model),
             )
 
-            with open(rf"{config.config_drivers_path}", "wb") as file:
+            with open(rf"{config.ckip_drivers_path}", "wb") as file:
                 pickle.dump(drivers, file)
 
     def connect(self) -> tuple:
@@ -39,6 +39,5 @@ class CKIPClient:
         Returns:
             a tuple that contains CkipWordSegmenter and CkipPosTagger.
         """
-
-        with open(config.config_drivers_path, "rb") as file:
+        with open(config.ckip_drivers_path, "rb") as file:
             return pickle.load(file)
