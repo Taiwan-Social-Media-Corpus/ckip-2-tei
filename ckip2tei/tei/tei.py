@@ -19,7 +19,7 @@ async def create_tags(root: ET.Element, post_data: PostData, media: str) -> None
     """
     meta_data = {
         "media": media,
-        "id": post_data.get("post_id"),
+        "id": post_data.get("id"),
         "author": post_data.get("author"),
         "year": get_year(post_data.get("date")),
         "board": post_data.get("board"),
