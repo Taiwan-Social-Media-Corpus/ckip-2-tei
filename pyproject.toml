@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ckip2tei"
-version = "1.0.2"
+version = "1.1.2"
 description = "A Python package that asynchronously segments JSON data into TEI XML format."
 authors = ["Retr0327"]
 readme = "README.md"
@@ -9,7 +9,6 @@ packages = [{include = "ckip2tei"}]
 [tool.poetry.dependencies]
 python = "^3.10"
 ckip-transformers = "^0.3.4"
-python-dotenv = "^1.0.1"
 pydantic = "^2.7.0"
 pydantic-settings = "^2.2.1"
 
