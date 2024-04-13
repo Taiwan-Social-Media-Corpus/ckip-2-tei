@@ -1,5 +1,4 @@
 import asyncio
-from typing import Literal
 from xml.dom import minidom
 import xml.etree.ElementTree as ET
 
@@ -8,10 +7,9 @@ from .tags.head import create_header_tag
 from .utils import get_year
 
 PostData = dict[str, str | dict[str, int] | list[dict[str, str]]]
-Media = Literal["ptt", "dcard"]
 
 
-async def create_tags(root: ET.Element, post_data: PostData, media: Media) -> None:
+async def create_tags(root: ET.Element, post_data: PostData, media: str) -> None:
     """The create_tags function creates TEI XML tags and add them to the root.
 
     Args:
@@ -21,8 +19,8 @@ async def create_tags(root: ET.Element, post_data: PostData, media: Media) -> No
     """
     meta_data = {
         "media": media,
+        "id": post_data.get("post_id"),
         "author": post_data.get("author"),
-        "post_id": post_data.get("post_id"),
         "year": get_year(post_data.get("date")),
         "board": post_data.get("board"),
         "title": post_data.get("title"),
@@ -34,12 +32,12 @@ async def create_tags(root: ET.Element, post_data: PostData, media: Media) -> No
     await asyncio.gather(task1, task2)
 
 
-def generate_tei_xml(post_data: PostData, media: Media) -> str:
+def generate_tei_xml(post_data: PostData, media: str) -> str:
     """The generate_tei_xml function generates TEI XML string.
 
     Args:
         post_data (PostData): the post data
-        media (Media): a Taiwan social media name
+        media (str): a Taiwan social media name
     """
 
     if not post_data:
