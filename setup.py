@@ -10,7 +10,7 @@ def main():
 
     setup(
         name="ckip2tei",
-        version="1.0.2",
+        version="1.1.2",
         description="A Python package that asynchronously segments JSON data into TEI XML format.",
         packages=find_namespace_packages(
             include=[
@@ -30,8 +30,9 @@ def main():
             "Operating System :: OS Independent",
         ],
         install_requires=[
-            "ckip-transformers >= 0.3.2",
-            "python-dotenv >= 1.0.0",
+            "ckip-transformers >= 0.3.4",
+            "pydantic >= 2.7.0",
+            "pydantic-settings >= 2.2.1",
         ],
         extras_require={
             "dev": ["pytest>=7.0", "twine>=4.0.2"],
