@@ -21,11 +21,15 @@ async def create_tags(root: ET.Element, post_data: PostData, media: str) -> None
         "media": media,
         "id": post_data.get("id"),
         "author": post_data.get("author"),
-        "year": get_year(post_data.get("date")),
+        "year": get_year(post_data.get("created_at")),
         "board": post_data.get("board"),
         "title": post_data.get("title"),
     }
-    content = (post_data.get("title"), post_data.get("body"), post_data.get("comments"))
+    content = (
+        post_data.get("title"),
+        post_data.get("content"),
+        post_data.get("comments"),
+    )
 
     task1 = asyncio.create_task(create_header_tag(root, meta_data))
     task2 = asyncio.create_task(create_body_tags(root, content, meta_data["author"]))
@@ -45,6 +49,24 @@ def generate_tei_xml(post_data: PostData, media: str) -> str:
 
     root = ET.Element("TEI.2")
     asyncio.run(create_tags(root, post_data, media))
+
+    xml_str = minidom.parseString(ET.tostring(root)).childNodes[0]
+    return xml_str.toprettyxml(indent="   ")
+
+
+async def generate_tei_xml_async(post_data: PostData, media: str) -> str:
+    """The generate_tei_xml_async function generates TEI XML string asynchronously.
+
+    Args:
+        post_data (PostData): the post data
+        media (str): a Taiwan social media name
+    """
+
+    if not post_data:
+        raise ValueError("post_data cannot be empty")
+
+    root = ET.Element("TEI.2")
+    await create_tags(root, post_data, media)
 
     xml_str = minidom.parseString(ET.tostring(root)).childNodes[0]
     return xml_str.toprettyxml(indent="   ")
